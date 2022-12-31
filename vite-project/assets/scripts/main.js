@@ -4,7 +4,6 @@ import '@splidejs/splide/css/core';
 import '@splidejs/splide/css/skyblue';
 import Splide from '@splidejs/splide';
 import activeNav from './modules/activeNav';
-import './modules/notion';
 
 if(document.getElementsByClassName('splide')[0]){
 	new Splide( '.splide' ).mount();
