@@ -1,5 +1,5 @@
-import express from "express";
-import http from 'http';
+require("express");
+require("http");
 
 const app = express();
 
