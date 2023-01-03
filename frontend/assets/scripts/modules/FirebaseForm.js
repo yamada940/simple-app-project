@@ -19,10 +19,10 @@ export default class FirebaseForm {
             born: this.$form.querySelector('input[name=born]').value
         })
         .then((docRef) => {
-            console.log("Document written with ID: ", docRef.id);
+            window.alert(`Success! ... ID: ${docRef.id}`);
         })
         .catch((error) => {
-            console.error("Error adding document: ", error);
+            window.alert(`Error! ... ${error}`);
         });
     }
 
