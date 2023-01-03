@@ -22,10 +22,10 @@ export function dbOperation(){
             const querySnapshot = await getDocs(q);
             const $table = document.getElementById('js-firebase-table');
 
-            querySnapshot.forEach((doc, i) => {
-                
-                const tagTr = document.createElement('tr');
+            querySnapshot.forEach((doc, index) => {
 
+                const tagTr = document.createElement('tr');
+                
                 const columns = [
                     doc.data().first,
                     doc.data().last,
