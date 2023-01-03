@@ -8,15 +8,15 @@ export default class FirebaseForm {
         this.db = getFirestore(firebaseApp);
 
         this.dbName = obj.dbName;
-        this.$form = obj.formId;
-        this.formController();
+        this.$form = document.getElementById(obj.formId);
+        this.$form.addEventListener('submit', (e) => this.handleClick(e));
 	}
 
-    async insertNewUser(params){
+    async insertNewUser(){
         await addDoc(collection(this.db, this.dbName), {
-            first: params.first,
-            last: params.last,
-            born: params.born
+            first: this.$form.querySelector('input[name=first]').value,
+            last: this.$form.querySelector('input[name=last]').value,
+            born: this.$form.querySelector('input[name=born]').value
         })
         .then((docRef) => {
             console.log("Document written with ID: ", docRef.id);
@@ -26,19 +26,8 @@ export default class FirebaseForm {
         });
     }
 
-    formController(){
-        const $form = document.getElementById(this.$form);
-        const handleClick = (e) => {
-            e.preventDefault();
-            const data = {
-                first: $form.querySelector('input[name=first]').value,
-                last: $form.querySelector('input[name=last]').value,
-                born: $form.querySelector('input[name=born]').value
-            }
-            console.log('data:', data);
-            this.insertNewUser(data);
-        }
-        
-        $form.addEventListener('submit', (e) => handleClick(e));
+    handleClick(e){
+        e.preventDefault();
+        this.insertNewUser();
     }
 }
