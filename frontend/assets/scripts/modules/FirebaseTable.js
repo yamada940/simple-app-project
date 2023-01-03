@@ -12,6 +12,8 @@ export default class FirebaseTable {
 
     async showData(){
         const q = query(collection(this.db, this.dbName));
+        // 'where'でソートした場合
+        // const q = query(collection(this.db, this.dbName), where('born', '>=', 1300));
 
         const querySnapshot = await getDocs(q);
         const $table = document.getElementById(this.tableId);
