@@ -1,11 +1,7 @@
-// import * as firebase from "firebase/app";
 import firebase from 'firebase/compat/app';
-// import { getFirestore } from "firebase/firestore";
 import { getFirestore, collection, query, where, getDocs } from "firebase/firestore";
 
 export function dbOperation(){
-    // TODO: Replace the following with your app's Firebase project configuration
-    // See: https://firebase.google.com/docs/web/learn-more#config-object
     const firebaseConfig = {
         apiKey: "AIzaSyCeiAgerHoiqBMmJQyIwWTlaQIHs3VJfRM",
         authDomain: "db-test-6a682.firebaseapp.com",
@@ -30,23 +26,19 @@ export function dbOperation(){
                 
                 const tagTr = document.createElement('tr');
 
-                const createTableRow = () => {
-                    const tagTd1 = document.createElement('td');
-                    tagTd1.textContent = doc.data().first;
+                const columns = [
+                    doc.data().first,
+                    doc.data().last,
+                    doc.data().born
+                ]
 
-                    const tagTd2 = document.createElement('td');
-                    tagTd2.textContent = doc.data().last;
-
-                    const tagTd3 = document.createElement('td');
-                    tagTd3.textContent = doc.data().born;
-
-                    tagTr.insertAdjacentElement('afterbegin', tagTd1);
-                    tagTr.insertAdjacentElement('afterbegin', tagTd2);
-                    tagTr.insertAdjacentElement('afterbegin', tagTd3);
-                    
-                    $table.insertAdjacentElement('afterbegin', tagTr);
+                for (let index = 0; index < columns.length; index++) {
+                    const tagTd = document.createElement('td');
+                    tagTd.textContent = columns[index];
+                    tagTr.insertAdjacentElement('afterbegin', tagTd);
                 }
-                createTableRow()
+                $table.insertAdjacentElement('afterbegin', tagTr);
+
             });
         }
         getData();
@@ -54,7 +46,6 @@ export function dbOperation(){
     showData();
 
     const insertNewUser = (params) => {
-        // Initialize Cloud Firestore and get a reference to the service
         
         db.collection("users").add({
             first: params.first,
