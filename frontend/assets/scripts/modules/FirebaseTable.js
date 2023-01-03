@@ -6,7 +6,6 @@ export default class FirebaseTable {
 	constructor(obj){
         const firebaseApp = firebase.initializeApp(firebaseConfig);
         this.db = getFirestore(firebaseApp);
-
         this.dbName = obj.dbName;
         this.tableId = obj.tableId;
 	}
