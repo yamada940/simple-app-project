@@ -16,21 +16,37 @@ export function dbOperation(){
         measurementId: "G-S8L5L31DJY"
     };
     
-    // Initialize Firebase
     const firebaseApp = firebase.initializeApp(firebaseConfig);
-    // const db = firebase.firestore();
     const db = getFirestore(firebaseApp);
 
     const showData = () => {
-        
         const getData = async () => {
-            // const q = query(collection(db, "users"), where("capital", "==", true));
             const q = query(collection(db, "users"));
 
             const querySnapshot = await getDocs(q);
-            querySnapshot.forEach((doc) => {
-                // doc.data() is never undefined for query doc snapshots
-                console.log(doc.id, " => ", doc.data());
+            const $table = document.getElementById('js-firebase-table');
+
+            querySnapshot.forEach((doc, i) => {
+                
+                const tagTr = document.createElement('tr');
+
+                const createTableRow = () => {
+                    const tagTd1 = document.createElement('td');
+                    tagTd1.textContent = doc.data().first;
+
+                    const tagTd2 = document.createElement('td');
+                    tagTd2.textContent = doc.data().last;
+
+                    const tagTd3 = document.createElement('td');
+                    tagTd3.textContent = doc.data().born;
+
+                    tagTr.insertAdjacentElement('afterbegin', tagTd1);
+                    tagTr.insertAdjacentElement('afterbegin', tagTd2);
+                    tagTr.insertAdjacentElement('afterbegin', tagTd3);
+                    
+                    $table.insertAdjacentElement('afterbegin', tagTr);
+                }
+                createTableRow()
             });
         }
         getData();
