@@ -1,7 +1,6 @@
 import firebase from 'firebase/compat/app';
 import { getFirestore, collection, query, where, getDocs } from "firebase/firestore";
 
-
 // dotenv.config()
 // obj: {
 //  dbName: str 'users'
@@ -26,32 +25,6 @@ export default class FirebaseDB {
         this.dbName = obj.dbName;
         this.tableId = obj.tableId;
 	}
-
-    async showData(){
-        const q = query(collection(this.db, this.dbName));
-
-        const querySnapshot = await getDocs(q);
-        const $table = document.getElementById(this.tableId);
-
-        querySnapshot.forEach((doc) => {
-
-            const tagTr = document.createElement('tr');
-            
-            const columns = [
-                doc.data().first,
-                doc.data().last,
-                doc.data().born
-            ];
-
-            for (let index = 0; index < columns.length; index++) {
-                const tagTd = document.createElement('td');
-                tagTd.textContent = columns[index];
-                tagTr.insertAdjacentElement('afterbegin', tagTd);
-            }
-            $table.insertAdjacentElement('afterbegin', tagTr);
-
-        });
-    }
 }
 
 // export function dbOperation(){
