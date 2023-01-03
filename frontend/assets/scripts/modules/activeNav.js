@@ -1,11 +1,11 @@
 export default class ActiveNav {
 	constructor(obj){
-		const $nav = document.getElementById(obj.navElement);
-		this.activateNavStyle($nav);
+		this.$nav = document.getElementById(obj.navElement);
+		this.activateNavStyle();
 	}
 
-	activateNavStyle(elm) {
-		const $navItems = elm.getElementsByTagName('a');
+	activateNavStyle() {
+		const $navItems = this.$nav.getElementsByTagName('a');
 		const url = window.location.href;
 
 		let topPageFlag = true;
