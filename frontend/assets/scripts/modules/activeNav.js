@@ -1,8 +1,6 @@
 export default class ActiveNav {
 	constructor(obj){
 		const $nav = document.getElementById(obj.navElement);
-		console.log('hi');
-
 		this.activateNavStyle($nav);
 	}
 
