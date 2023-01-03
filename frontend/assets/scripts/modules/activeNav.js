@@ -1,13 +1,27 @@
-export default function activeNav(){
-	const url = window.location.href;
-	const $nav = document.getElementById('js-nav');
-	const $navItems = $nav.getElementsByTagName('a');
-	for (let index = 0; index < $navItems.length; index++) {
+export default class ActiveNav {
+	constructor(obj){
+		const $nav = document.getElementById(obj.navElement);
+		console.log('hi');
 
-		const $thisNavItem = $navItems[index];
-		const pageKey = $thisNavItem.dataset.page;
-		if(url.indexOf(pageKey) !== -1){
-			$thisNavItem.className += ' is-active';
+		this.activateNavStyle($nav);
+	}
+
+	activateNavStyle(elm) {
+		const $navItems = elm.getElementsByTagName('a');
+		const url = window.location.href;
+
+		let topPageFlag = true;
+
+		for (let index = 0; index < $navItems.length; index++) {
+			const pageKey = $navItems[index].dataset.page;
+			if(url.indexOf(pageKey) !== -1){
+				$navItems[index].className += ' is-active';
+				topPageFlag = false;
+			}
+		}
+
+		if(topPageFlag){
+			$navItems[0].className += ' is-active';
 		}
 	}
 }
