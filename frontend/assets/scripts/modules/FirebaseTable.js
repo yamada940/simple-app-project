@@ -29,7 +29,7 @@ export default class FirebaseTable {
             for (let index = 0; index < columns.length; index++) {
                 const tagTd = document.createElement('td');
                 tagTd.textContent = columns[index];
-                tagTr.insertAdjacentElement('afterbegin', tagTd);
+                tagTr.insertAdjacentElement('beforeend', tagTd);
             }
             $table.insertAdjacentElement('afterbegin', tagTr);
         });
