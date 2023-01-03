@@ -4,7 +4,7 @@ import '@splidejs/splide/css/core';
 import '@splidejs/splide/css/skyblue';
 import Splide from '@splidejs/splide';
 import ActiveNav from './modules/activeNav';
-import { dbOperation } from './modules/dbOperation';
+import FirebaseDB from './modules/dbOperation';
 
 if(document.getElementById('js-nav') !== null){
 	new ActiveNav({
@@ -17,5 +17,9 @@ if(document.getElementsByClassName('splide')[0]){
 }
 
 if(document.getElementById('js-firebase-table') !== null){
-	dbOperation();
+	const firebaseDb = new FirebaseDB({
+		dbName: 'users',
+ 		tableId: 'js-firebase-table'
+	})
+	firebaseDb.showData();
 }
