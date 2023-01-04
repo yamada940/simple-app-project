@@ -3,17 +3,31 @@ import '@splidejs/splide/css';
 import '@splidejs/splide/css/core';
 import '@splidejs/splide/css/skyblue';
 import Splide from '@splidejs/splide';
-import activeNav from './modules/activeNav';
-import { dbOperation } from './modules/dbOperation';
+import ActiveNav from './modules/activeNav';
+import FirebaseTable from './modules/FirebaseTable';
+import FirebaseForm from './modules/FirebaseForm';
 
 if(document.getElementById('js-nav') !== null){
-	activeNav();
+	new ActiveNav({
+		navElement: 'js-nav'
+	})
 }
 
 if(document.getElementsByClassName('splide')[0]){
 	new Splide( '.splide' ).mount();
 }
 
+if(document.getElementById('js-firebase-form') !== null){
+	new FirebaseForm({
+		dbName: 'users',
+		formId: 'js-firebase-form'
+	})
+}
+
 if(document.getElementById('js-firebase-table') !== null){
-	dbOperation();
+	const firebaseTable = new FirebaseTable({
+		dbName: 'users',
+ 		tableId: 'js-firebase-table'
+	})
+	firebaseTable.showData();
 }
