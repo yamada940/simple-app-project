@@ -1,20 +1,31 @@
-# Hosting 
-1. Setup Firebase Hosting
-	1. firebase init
-	2. Hosting: Configure files for Firebase Hosting and (optionally) set up GitHub 
-	3. Action deploys
-	4. Use an existing project
-	5. What do you want to use as your public directory?
-		1. dist
-	6. Configure as a single-page app (rewrite all urls to /index.html)? (y/N) n
-	7. File dist/index.html already exists. Overwrite? (y/N) n
-	8. Set up automatic builds and deploys with GitHub? (y/N) y
-	9. For which GitHub repository would you like to set up a GitHub workflow? (format: user/repository) (seito-developer/db-test) 
-		1. just Enter
-	10.  Set up the workflow to run a build script before every deploy? (y/N) y
-	11. What script should be run before every deploy? (npm ci && npm run build) 
-		1. just Enter
-	12. Set up automatic deployment to your site's live channel when a PR is merged? (Y/n) y
-	13. What is the name of the GitHub branch associated with your site's live channel? (main) 
-2. htmlを手動でdist/へ。コピペでassets読み込ませる
-3. firebase deploy / merge to main
+# What is this?
+- ViteやFirebaseを用いて基本的なアプリ開発ができる環境一式です
+- 動かすにはNode.js v19.3.0がインストールされていること、またFirebaseでFirestoreのセットアップが完了している必要があります
+- とりあえず全部動かしてみたいなら[https://github.com/seito-developer/simple-app-project/tree/level8-vite-setup](最終レベルのブランチ)に移動し、 コマンド `npm install` -> `npm run dev` を実行すれば動きます。
+- [https://github.com/seito-developer/simple-app-project/branches/yours](ブランチはLevel8から1まであります。)数字が大きいほど手前の内容です。level8から順に触れることで、ステップバイステップでモダンJavaScript~Firebaseを理解できます。
+
+# 各ブランチのテーマ
+
+## level8-vite-setup
+ビルドツールViteのインストール。Hello Worldまで
+
+## level7-sass
+Sassのインストールと実装例
+
+## level6-js-module-class
+JSをクラス・モジュール化した実装例
+
+## level5-npm-slider
+npmモジュールの使用例
+
+## level4-data-read
+Firestore(Firebase)からデータを読み取り、表示させる実装例
+
+## level3-env-security
+.envファイルを用いたセキュリティに配慮した設計の実装例
+
+## level2-data-create
+Firestore(Firebase)にデータを送り、保存させる実装例
+
+## level1-firebase-hosting
+Firebaseにホスティングする実装例
