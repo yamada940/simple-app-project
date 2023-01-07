@@ -1,9 +1,15 @@
 # Hosting 
 1. Setup Firebase Hosting
 	1. firebase init
-	2. Hosting: Configure files for Firebase Hosting and (optionally) set up GitHub 
+		1. > Hosting: Configure files for Firebase Hosting and (optionally) set up GitHub 
+		 (半角スペース押すと選択。その後エンター)
+	2. Please select an option
+		1. > Use an existing project
+	3. Select a default Firebase project for this directory: (Use arrow keys)
+		1. > 任意のプロジェクト選択（事前にFirebaseで新規のFirestoreプロジェクトを作成が終わっている必要アリ）
 	3. Action deploys
 	4. Use an existing project
+
 	5. What do you want to use as your public directory?
 		1. dist
 	6. Configure as a single-page app (rewrite all urls to /index.html)? (y/N) n
